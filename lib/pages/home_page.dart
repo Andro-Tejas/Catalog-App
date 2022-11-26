@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
           child: Text("Welcome to building the new App by $name"),
         ),
       ),
+      drawer:Drawer(),
     );
   }
 }
