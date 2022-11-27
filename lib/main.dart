@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
             primaryTextTheme: GoogleFonts.latoTextTheme()
       ),
-
+      debugShowCheckedModeBanner: false,
     // initialRoute : "/home",
     routes:{
         "/":(context)=>LoginPage(),
