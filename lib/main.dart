@@ -20,10 +20,11 @@ class MyApp extends StatelessWidget {
             primaryTextTheme: GoogleFonts.latoTextTheme()
       ),
       debugShowCheckedModeBanner: false,
-    // initialRoute : "/home",
+    initialRoute : MyRoutes.homeRoute,
     routes:{
         "/":(context)=>LoginPage(),
-        MyRoutes.homeRoute:(context)=>HomePage()
+        MyRoutes.homeRoute:(context)=>HomePage(),
+      MyRoutes.loginRoute:(context)=>LoginPage()
     },
     );
   }

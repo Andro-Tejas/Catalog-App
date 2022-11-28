@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../widgets/drawer.dart';
+
 class HomePage extends StatelessWidget {
 
   String name = "Tejas";
@@ -16,7 +18,7 @@ class HomePage extends StatelessWidget {
           child: Text("Welcome to building the new App by $name"),
         ),
       ),
-      drawer:Drawer(),
+      drawer:MyDrawer(),
     );
   }
 }
