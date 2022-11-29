@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -64,6 +65,17 @@ class MyDrawer extends StatelessWidget {
               ),
               title: Text(
                 "Email me",
+                textScaleFactor: 1.2,
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                CupertinoIcons.shopping_cart,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Cart",
                 textScaleFactor: 1.2,
                 style: TextStyle(color: Colors.white),
               ),
