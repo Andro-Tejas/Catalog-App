@@ -35,7 +35,7 @@ class MyTheme {
       );
 
   // Colors
-  static Color creamColor = Color.fromARGB(249, 247, 240, 245);
+  static Color creamColor = Color.fromARGB(249, 230, 220, 245);
   static Color darkCreamColor = Vx.gray800;
   static Color darkBluishColor = Color(0xfff403b58);
   static Color lightBluishColor = Vx.indigo500;

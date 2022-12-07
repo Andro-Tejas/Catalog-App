@@ -15,11 +15,11 @@ class CatalogModel {
 
   // get item by Id
 
-  static Item getById(int id) => items.firstWhere((element) => element.id == id, orElse: null);
+   Item getById(int id) => items.firstWhere((element) => element.id == id, orElse: null);
 
   // get item by position
 
-  static Item getByPosition(int pos) => items[pos];
+   Item getByPosition(int pos) => items[pos];
 
 }
 
