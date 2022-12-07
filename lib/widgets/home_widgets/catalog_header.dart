@@ -10,7 +10,7 @@ Widget build(BuildContext context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      "Catalog App".text.xl5.bold.color(MyTheme.darkBluishColor).make(),
+      "Catalog App".text.xl5.bold.color(context.theme.colorScheme.secondary).make(),
       "treding products online".text.xl2.make()
     ],
   );

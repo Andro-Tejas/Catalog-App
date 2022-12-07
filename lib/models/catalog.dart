@@ -12,6 +12,15 @@ class CatalogModel {
   //     image: "https://m.media-amazon.com/images/I/712ALflYTYL._SX679_.jpg",
   //   )
   // ];
+
+  // get item by Id
+
+  static Item getById(int id) => items.firstWhere((element) => element.id == id, orElse: null);
+
+  // get item by position
+
+  static Item getByPosition(int pos) => items[pos];
+
 }
 
 class Item {

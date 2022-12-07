@@ -14,7 +14,7 @@ class CatalogList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: CatalogModel.items.length,
         itemBuilder: (context, index) {
-          final catalog = CatalogModel.items[index];
+          final catalog = CatalogModel.getByPosition(index);
           return InkWell(
               onTap: () => Navigator.push(
                     context,
@@ -48,26 +48,26 @@ class CatalogItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-            catalog.desc.text.textStyle(context.captionStyle).make(),
+            catalog.name.text.lg.color(context.theme.focusColor).bold.make(),
+            catalog.desc.text.textStyle(context.captionStyle).color(context.theme.focusColor).make(),
             10.heightBox,
             ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
               buttonPadding: EdgeInsets.zero,
               children: [
-                "\$${catalog.price}".text.bold.xl.make(),
+                "\$${catalog.price}".text.bold.color(context.theme.highlightColor).xl.make(),
                 ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBluishColor),
+                            MaterialStateProperty.all(context.theme.focusColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
-                    child: "Buy".text.make())
+                    child: "Add to cart".text.make())
               ],
             ).pOnly(right: 8.0)
           ],
         ))
       ],
-    )).white.rounded.square(140).make().py16();
+    )).color(context.theme.cardColor).rounded.square(160).make().py16();
   }
 }
