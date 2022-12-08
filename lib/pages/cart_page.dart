@@ -1,6 +1,7 @@
 import 'package:catalogapp/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../models/cart.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -29,23 +30,33 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
+
     return SizedBox(
-      height: 200,
-      child: Row(
-        children: [
-          "\$9999".text.xl5.color(context.theme.focusColor).make().px(16),
-          90.widthBox,
-          ElevatedButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: "Buying not supported yet.".text.make()));
-            },
-            style: ButtonStyle(
+      height: 150,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            "\$${_cart.totalPrice}"
+                .text
+                .xl5
+                .color(context.theme.focusColor)
+                .make(),
+            ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: "Buying not supported yet.".text.make()));
+              },
+              style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
-                    context.theme.colorScheme.secondary)),
-            child: "Buy".text.white.make(),
-          ).w32(context)
-        ],
+                    context.theme.colorScheme.secondary),
+              ),
+              child: "Buy".text.white.make(),
+            ).w32(context)
+          ],
+        ),
       ),
     );
   }
@@ -59,18 +70,25 @@ class _CartList extends StatefulWidget {
 }
 
 class _CartListState extends State<_CartList> {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: "Item 1".text.make(),
-      ),
-    );
+    // return (_cart.items?.isEmpty ?? false)
+    return _cart.items.isEmpty
+        ? "Nothing to Show".text.bold.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items?.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: const Icon(Icons.done),
+              trailing: IconButton(
+                icon: const Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  _cart.remove(_cart.items[index]);
+                  setState(() {});
+                },
+              ),
+              title: _cart.items[index].name.text.make(),
+            ),
+          );
   }
 }
